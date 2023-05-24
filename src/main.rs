@@ -1,5 +1,5 @@
 use std::io;
-
+mod intro;
 fn main() {
     println!("Enter your name:");
 
@@ -10,5 +10,6 @@ fn main() {
         .expect("Failed to read line");
 
     println!("Hello, {}!", input.trim());
+    intro::greet();
 }
 
