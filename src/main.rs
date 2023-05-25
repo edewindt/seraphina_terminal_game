@@ -1,6 +1,6 @@
 use std::io;
 mod intro;
-use dialoguer::{Select};
+use dialoguer::{Select, theme::ColorfulTheme};
 fn main() {
     println!("Enter your name:");
 
@@ -11,20 +11,28 @@ fn main() {
         .expect("Failed to read line");
 
     println!("Hello, {}!", input.trim());
-    intro::greet();
+    intro::greet(input);
     println!();
     choose();
     
 }
 
 fn choose(){
-    let options = ["Option 1", "Option 2", "Option 3"];
+    let options = ["Easy", "Medium", "Hard", "Impossible"];
 
-    let selection = Select::new()
+    let selection = Select::with_theme(&ColorfulTheme::default())
         .items(&options)
         .default(0) // Set the default selected option (optional)
         .interact()
         .unwrap();
 
     println!("Selected: {}", options[selection]);
+
+    match selection {
+        0 => println!("You selected Easy"),
+        1 => println!("You selected Medium"),
+        2 => println!("You selected Hard"),
+        3 => println!("You selected Impossible"),
+        _ => unreachable!(),
+    }
 }
