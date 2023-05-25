@@ -1,5 +1,6 @@
 use std::io;
 mod intro;
+mod npc;
 use dialoguer::{Select, MultiSelect, theme::ColorfulTheme};
 fn main() {
     println!("Enter your name:");
@@ -16,6 +17,7 @@ fn main() {
     println!();
     selected_option = choose();
     game(selected_option);
+    npc::easy();
     println!("{}", selected_option);
     choose2();
     println!("Press Enter To Finish The Game");
