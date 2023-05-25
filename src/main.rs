@@ -1,11 +1,11 @@
 use std::io;
 mod intro;
-use dialoguer::{Select, theme::ColorfulTheme};
+use dialoguer::{Select, MultiSelect, theme::ColorfulTheme};
 fn main() {
     println!("Enter your name:");
 
     let mut input = String::new();
-
+    let mut i2 = String::new();
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read line");
@@ -14,6 +14,12 @@ fn main() {
     intro::greet(input);
     println!();
     choose();
+    println!();
+    choose2();
+    println!("Press Enter To Finish The Game");
+    io::stdin()
+        .read_line(&mut i2)
+        .expect("Failed to read line");
     
 }
 
@@ -35,4 +41,29 @@ fn choose() {
         3 => println!("I have nothing to say, the choice speaks for itself."),
         _ => unreachable!(),
     }
+}
+
+fn choose2() {
+    println!("Press the SPACEBAR to select different options");
+ // Define the options for the multiselect prompt
+ let options = &[
+    "Option 1",
+    "Option 2",
+    "Option 3",
+    "Option 4",
+    "Option 5",
+];
+
+// Create the multiselect prompt
+let selections = MultiSelect::new()
+    .with_prompt("Select multiple options")
+    .items(options)
+    .interact()
+    .unwrap();
+
+// Print the selected options
+println!("Selected options:");
+for selection in selections {
+    println!("{}", options[selection]);
+}
 }
