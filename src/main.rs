@@ -1,9 +1,11 @@
-use std::io;
+use std::io::{self, Write};
 mod intro;
 mod npc;
 use dialoguer::{Select, MultiSelect, theme::ColorfulTheme};
+use std::thread;
+use std::time::Duration;
 fn main() {
-    println!("Enter your name:");
+    print_typing_effect("Enter your name:");
 
     let mut input = String::new();
     let mut i2 = String::new();
@@ -98,4 +100,16 @@ for selection in &selections {
         }
     }
 
+}
+
+fn print_typing_effect(text: &str) {
+    let mut stdout = io::stdout();
+
+    for c in text.chars() {
+        stdout.write_all(c.to_string().as_bytes()).unwrap();
+        stdout.flush().unwrap();
+        thread::sleep(Duration::from_millis(50)); // Adjust the delay as needed
+    }
+
+    println!(); // Move to the next line after the typing effect
 }
