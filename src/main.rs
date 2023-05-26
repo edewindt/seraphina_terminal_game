@@ -5,6 +5,7 @@ use dialoguer::{Select, MultiSelect, theme::ColorfulTheme};
 use std::thread;
 use std::time::Duration;
 fn main() {
+    println!("Type `Ctrl` or `Command` C to quit the game at any time.");
     print_typing_effect("Enter your name:".to_string(), 50);
 
     let mut input = String::new();
