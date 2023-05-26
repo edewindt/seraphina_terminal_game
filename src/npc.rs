@@ -20,13 +20,11 @@ fn get_npc_response<'a>(player_input: &str, npc_responses: &'a Vec<(&str, &str)>
 pub fn easy() {
     let npc_responses: Vec<(&str, &str)> = vec![
         ("Hello", "Hi there!"),
-        ("Hello", "Hi there!"),
-        ("Hello", "Hi there!"),
-        ("Hello", "Hi there!"),
+        ("Help", "How can I help you today?"),
         ("How are you?", "I'm doing well, thank you!"),
         ("Goodbye", "Goodbye!"),
     ];
-    println!("This NPC only responds to: \"Hello\", \"How are you?\", and \"Goodbye\"");
+    println!("This NPC only responds to: \"Hello\", \"How are you?\", \"Help\", and \"Goodbye\"");
     println!("NPC: Welcome! How can I assist you today?");
 
     loop {
