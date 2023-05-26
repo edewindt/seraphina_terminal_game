@@ -17,6 +17,7 @@ fn main() {
     println!();
     selected_option = choose();
     game(selected_option);
+    println!("Type \"bye\" to end the conversation.");
     npc::easy();
     println!("{}", selected_option);
     choose2();
