@@ -19,8 +19,8 @@ fn main() {
     intro::greet(input);
     println!();
     selected_option = choose();
+    println!("Type \"bye\" to end the conversation.");
     game(selected_option);
-
     println!("{}", selected_option);
     choose2();
     println!("Press Enter To Finish The Game");
@@ -40,9 +40,9 @@ fn choose() -> &'static str {
         .unwrap();
 
     println!("Selected: {}", options[selection]);
-    println!("Type \"bye\" to end the conversation."); 
+
     match selection {
-        0 => {       npc::easy()},
+        0 => {print_typing_effect("I see, so you're a sissy, too scared to get your hands dirty? That's okay, we'll take it easy on you.".to_string(), 20)},
         1 => {print_typing_effect("I see, so you won't give me up all the way, but you're still too much of coward to choose anything harder than average, kind of lame".to_string(), 20)},
         2 => {print_typing_effect("You think you're a tough guy huh? Why didn't you choose impossible, I guess you're still just a beta".to_string(), 20)},
         3 => {print_typing_effect("I have nothing to say, the choice speaks for itself.".to_string(), 20)},
@@ -53,7 +53,7 @@ fn choose() -> &'static str {
 
 fn game(con:&str) {
     match con {
-        "Easy" => println!("So freaking easy"),
+        "Easy" => {npc::easy()},
         "Medium" => println!("Meh, its medium"),
         "Hard" => println!("Okay, its getting spicy now"),
         "Impossible" => println!("Now we're talking WHOOOO BABY!"),
