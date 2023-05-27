@@ -2,7 +2,7 @@ use std::io::{self, Write};
 mod intro;
 mod npc;
 use dialoguer::{Select, MultiSelect, theme::ColorfulTheme};
-use std::thread;
+use std::{thread, process};
 use std::time::Duration;
 fn main() {
     println!("Type `Ctrl` or `Command` C to quit the game at any time.");
@@ -62,14 +62,14 @@ fn game(con:&str) {
 }
 
 fn choose2() {
-    println!("Press the SPACEBAR to select different options");
+    println!("Press the SPACEBAR to select different options, if you pick the wrong two items together, you die.");
  // Define the options for the multiselect prompt
  let options = &[
-    "Option 1",
-    "Option 2",
-    "Option 3",
-    "Option 4",
-    "Option 5",
+    "Banana",
+    "Water",
+    "Candle",
+    "Sodium",
+    "Oxygen",
 ];
 
 // Create the multiselect prompt
@@ -86,8 +86,14 @@ for selection in &selections {
 }
     // Perform logic based on the selected options
     match selections.as_slice() {
-        [0, 1, 2] => {
-            println!("Logic for options 1, 2, and 3");
+        [1, 3] => {
+            let mut i2 = String::new();
+            println!("Water and Sodium create a violent Chemical Reaction, which lead to your death");
+            println!("Press Enter To Finish The Game");
+    io::stdin()
+        .read_line(&mut i2)
+        .expect("Failed to read line");
+            process::exit(0);
             // Perform specific actions for options 1, 2, and 3
         }
         [3, 4] => {
