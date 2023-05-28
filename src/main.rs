@@ -96,8 +96,14 @@ for selection in &selections {
             process::exit(0);
             // Perform specific actions for options 1, 2, and 3
         }
-        [3, 4] => {
-            println!("Logic for options 4 and 5");
+        [2, 4] => {
+            let mut i2 = String::new();
+            println!("The candle's flame reacted with the oxygen to create an explosion, and this lead to your death.");
+            println!("Press Enter To Finish The Game");
+            io::stdin()
+                .read_line(&mut i2)
+                .expect("Failed to read line");
+                    process::exit(0);
             // Perform specific actions for options 4 and 5
         }
         _ => {
